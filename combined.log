@@ -5,3 +5,5 @@
 2025-05-21 15:23:23 : error : Failed to start server
 2025-05-21 15:23:32 : error : Failed to start server
 2025-05-21 15:24:37 : error : Failed to start server
+2025-05-21 15:42:57 : info : Database initialized successfully
+2025-05-21 15:42:57 : info : Server listening on port 3000
