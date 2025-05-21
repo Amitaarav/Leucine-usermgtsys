@@ -7,3 +7,4 @@
 2025-05-21 15:24:37 : error : Failed to start server
 2025-05-21 15:42:57 : info : Database initialized successfully
 2025-05-21 15:42:57 : info : Server listening on port 3000
+2025-05-21 16:31:36 : warn : Failed to connect to database. Retrying in 5 seconds... (5 attempts remaining)
