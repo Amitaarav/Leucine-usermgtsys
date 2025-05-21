@@ -14,13 +14,29 @@ process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 });
 
+const MAX_RETRIES = 5;
+const RETRY_DELAY = 5000; // 5 seconds
 
-async function startServer() {
+async function connectWithRetry(retries = MAX_RETRIES) {
   try {
     console.log("Initializing database...");
     await AppDataSource.initialize();
     console.log("DB initialized");
     logger.info("Database initialized successfully");
+    return true;
+  } catch (err) {
+    if (retries > 0) {
+      logger.warn(`Failed to connect to database. Retrying in ${RETRY_DELAY/1000} seconds... (${retries} attempts remaining)`);
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+      return connectWithRetry(retries - 1);
+    }
+    throw err;
+  }
+}
+
+async function startServer() {
+  try {
+    await connectWithRetry();
 
     const app = express();
 
