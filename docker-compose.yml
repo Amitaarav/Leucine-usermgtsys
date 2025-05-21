@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: LeucineDB
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: amitgupta
+      POSTGRES_PASSWORD: "AmGm#@555"
+      POSTGRES_DB: leucineDB
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
